@@ -1,5 +1,5 @@
 # Install homebrew
-ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 export PATH=/usr/local/bin:$PATH
 
@@ -32,7 +32,6 @@ brew install \
   readline \
   reattach-to-user-namespace \
   ssh-copy-id \
-  sshfs \
   tmux \
   tree \
   unrar \
@@ -48,6 +47,7 @@ brew install zsh --disable-etcdir
 brew linkapps
 
 # Add zsh to list of shells
+echo "Adding ZSH to list of shells..."
 sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
 
 # Fix apple misconfiguration so Zsh has proper PATH
@@ -63,16 +63,26 @@ heroku update
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
+# Install OS X Fuse
+brew cask install osxfuse
+brew install homebrew/fuse/sshfs
+
+echo "Asking for administrator password upfront..."
+
 # Ask for the administrator password upfront
 sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+echo "Setting computer name..."
+
 sudo scutil --set ComputerName "tb-mbpro"
 sudo scutil --set HostName "tb-mbpro"
 sudo scutil --set LocalHostName "tb-mbpro"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "tb-mbpro"
+
+echo "Setting sane Mac OS X defaults..."
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -93,7 +103,7 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Restart automatically if the computer freezes
-systemsetup -setrestartfreeze on
+sudo systemsetup -setrestartfreeze on
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
@@ -104,6 +114,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Automatically illuminate built-in MacBook keyboard in low light
 defaults write com.apple.BezelServices kDim -bool true
+
 # Turn off keyboard illumination when computer is not used for 5 minutes
 defaults write com.apple.BezelServices kDimTime -int 300
 
@@ -181,6 +192,7 @@ defaults write com.twitter.twitter-mac AutomaticQuoteSubstitutionEnabled -bool f
 defaults write com.twitter.twitter-mac ESCClosesComposeWindow -bool true
 
 # setup dev lookups to use dnsmasq
-sudo mkdir -v /etc/resolver
+if [[ ! -d /etc/resolver ]]; then
+  sudo mkdir -v /etc/resolver
+fi
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
-
