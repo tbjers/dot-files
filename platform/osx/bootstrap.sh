@@ -9,7 +9,6 @@ brew link libevent
 brew install \
   ack \
   cloc \
-  clojure \
   coreutils \
   cmake \
   cowsay \
@@ -23,6 +22,7 @@ brew install \
   grc \
   hub \
   lame \
+  leiningen \
   mariadb \
   mc \
   openssl \
@@ -44,9 +44,6 @@ brew install \
 brew install llvm --with-clang --with-asan
 brew install zsh --disable-etcdir
 
-# install wc3 version of tidy, which is a head only formula
-brew install https://raw.github.com/gist/3790109/373a9eb28d41ee413caf189cdb1d3044bec24857/tidy-html5.rb --HEAD
-
 # links apps installed by homebrew
 brew linkapps
 
@@ -54,14 +51,9 @@ brew linkapps
 sudo sh -c "echo /usr/local/bin/zsh >> /etc/shells"
 
 # Fix apple misconfiguration so Zsh has proper PATH
-sudo mv /etc/zshenv /etc/zprofile
-
-# Install fuse4x kext
-sudo cp -rfX /usr/local/Cellar/fuse4x-kext/0.9.1/Library/Extensions/fuse4x.kext /Library/Extensions
-sudo chmod +s /Library/Extensions/fuse4x.kext/Support/load_fuse4x
-
-# Update cabal
-cabal update
+if [ -f /etc/zshenv ]; then
+  sudo mv /etc/zshenv /etc/zprofile
+fi
 
 # Install Heroku toolbelt
 brew install heroku-toolbelt
