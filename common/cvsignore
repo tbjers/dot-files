@@ -1,0 +1,12 @@
+tags
+.DS_Store
+.hg
+.git
+.svn
+.pyc
+.pyo
+.BACKUP.*.*
+.BASE.*.*
+.LOCAL.*.*
+.REMOTE.*.*
+.orig

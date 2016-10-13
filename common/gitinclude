@@ -1,0 +1,121 @@
+[alias]
+    br                = branch
+    ci                = commit
+    co                = checkout
+    co-ours           = checkout --ours
+    co-theirs         = checkout --theirs
+    coi               = checkout-index
+    coi-ours          = checkout-index -f -a --stage=2
+    coi-theirs        = checkout-index -f -a --stage=3
+    cp                = cherry-pick
+    df                = diff --color=never
+    ds                = diff --stat --color=never
+    ds                = diff --staged --color=never
+    g                 = grep --break --heading --line-number
+    last              = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white)%an, %ar%Creset' -n 20
+    lc                = log ORIG_HEAD.. --stat --no-merges
+    lp                = log --patch --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white)%an, %ar%Creset'
+    ls                = log --stat --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white)%an, %ar%Creset'
+    mt                = mergetool -y
+    pu                = pull
+    pul               = pull
+    pus               = push
+    rb                = rebase
+    rbc               = rebase --continue
+    rbs               = rebase --skip
+    rl                = reflog
+    rp                = remote prune
+    rs                = remote show
+    rt                = remote
+    ru                = remote update
+    sb                = show-branch
+    st                = status -s
+
+    catchup           = log --patch --reverse --topo-order _ribbon..origin/master
+    changes           = diff --name-status -r
+    current-branch    = !git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
+    delete-merged     = !git pull --prune && git branch --merged | grep -v '*' | xargs -n 1 git branch -d
+    diffall           = diff HEAD --color=never
+    diffstat          = diff --stat --color=never
+    fetch-all         = fetch --depth=999999999
+    forget            = rm --cached
+    git2ssh           = !cat "$(git rev-parse --git-dir)/config" | sed -e 's/url = git:/url = ssh:/' > /tmp/config && mv /tmp/config "$(git rev-parse --git-dir)/config"
+    graphviz          = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+    lg                = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lost              = !"git fsck | awk '/dangling commit/ {print $3}' | git show --format='SHA1: %C(yellow)%h%Cblue%d%Creset %s %C(white)%an, %ar%Creset' --stdin | awk '/SHA1/ {sub(\"SHA1: \", \"\"); print}'"
+    merge-ours        = !git checkout --ours   . && git add -u && git commit
+    merge-theirs      = !git checkout --theirs . && git add -u && git commit
+    new               = !hub create && git push --set-upstream origin master
+    pop               = stash pop
+    push-new          = !git push -u origin `git rev-parse --abbrev-ref HEAD`
+    record            = !sh -c '(git add -p -- $@ && git commit) || git reset' --
+    reset-origin      = !git fetch && git reset --hard "origin/`git rev-parse --abbrev-ref HEAD`"
+    ribbon            = tag --force _ribbon origin/master
+    root              = !pwd
+    serve             = daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+    stage             = add
+    staged            = diff --staged
+    svn-ci            = svn dcommit
+    svn-up            = svn rebase
+    sync              = !sh -c 'git pull && git diff --quiet HEAD || (git commit $1 && git push)' -
+    tags              = tag -l
+    track             = checkout -t
+    undo              = reset --soft HEAD^
+    unstage           = reset HEAD
+    unstaged          = diff
+    unstash           = stash apply
+    who               = shortlog -s --
+    wtf               = !$ZSH/bin/git-wtf
+    rank-contributors = !$ZSH/bin/git-rank-contributors
+
+[core]
+    autocrlf        = false
+    excludesfile    = ~/.cvsignore
+    whitespace      = trailing-space,space-before-tab
+    editor          = vim
+
+[color]
+    branch          = auto
+    diff            = auto
+    interactive     = true
+    status          = auto
+    ui              = true
+
+[advice]
+    statusHints     = false
+
+[branch]
+    autosetupmerge  = true
+
+[push]
+    default         = simple
+
+[rebase]
+    autosquash      = true
+
+[rerere]
+    enabled         = false
+
+[credential]
+  helper = cache --timeout=31536000
+
+[grep]
+    lineNumber      = true
+
+[instaweb]
+    httpd           = webrick
+
+[diff]
+    mnemonicprefix  = true
+    renames         = copies
+
+[merge]
+    stat            = true
+
+[hub]
+    protocol        = ssh
+
+[gist]
+    browse          = true
+
+# vim: ft=gitconfig

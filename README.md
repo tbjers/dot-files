@@ -1,5 +1,9 @@
 # tbjers/dot-files
-Just a bunch of dotfiles.
+My dotfiles, compatible with [ellipsis][ellipsis].
+
+## Features
+
+Does not provide any shell or editor configurations. See [dot-zsh][dot-zsh], etceterea for the rest of my configurations.
 
 ## Install
 Clone and symlink or install with [ellipsis][ellipsis]:
