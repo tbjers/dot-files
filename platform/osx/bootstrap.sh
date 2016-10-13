@@ -196,3 +196,8 @@ if [[ ! -d /etc/resolver ]]; then
   sudo mkdir -v /etc/resolver
 fi
 sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
+
+# Install Input Mono font
+echo "Installing Input Mono font..."
+rm -Rf /tmp/InputMono && mkdir -p /tmp/InputMono && curl -s -L -o /tmp/InputMono/InputMono.zip "http://input.fontbureau.com/build/?fontSelection=fourStyleFamily&regular=InputMono-Regular&italic=InputMono-Italic&bold=InputMono-Medium&boldItalic=InputMono-MediumItalic&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.3&accept=I+do&email=" && cd /tmp/InputMono && unzip -o -j InputMono.zip *.ttf && mv -f /tmp/InputMono/*.ttf $HOME/Library/Fonts
+echo "Font installed."
