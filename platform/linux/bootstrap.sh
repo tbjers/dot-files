@@ -3,13 +3,19 @@ export PATH=/usr/local/bin:$PATH
 if [ -x `which dnf` ]; then
   echo "Installing common packages..."
   sudo dnf install -y \
+    automake \
     ctags \
     curl \
     elinks \
     hub \
+    gcc \
+    gcc-c++ \
     git \
     gitflow \
+    kernel-devel \
+    make \
     mariadb \
+    mariadb-server \
     mc \
     openssl \
     sed \
