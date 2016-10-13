@@ -4,6 +4,7 @@
 
 pkg.link() {
   fs.link_files common
+  fs.link_rfile bin
 
   case $(os.platform) in
     osx)
@@ -34,24 +35,3 @@ You should set your email, name and github user for git with `git config`:
     git config --global github.user "tbjers"
 EOF
 }
-
-# The following hooks can be defined to customize behavior of your package:
-# pkg.install() {
-#     fs.link_files $PKG_PATH
-# }
-
-# pkg.push() {
-#     git.push
-# }
-
-# pkg.pull() {
-#     git.pull
-# }
-
-# pkg.installed() {
-#     git.status
-# }
-#
-# pkg.status() {
-#     git.diffstat
-# }
