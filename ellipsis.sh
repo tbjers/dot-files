@@ -30,7 +30,7 @@ pkg.install() {
 You should set your email, name and github user for git with `git config`:
 
     git config --global user.name "Torgny Bjers"
-    git config --global user.email "hello@tbjers.com"
+    git config --global user.email "torgny.bjers@gmail.com"
     git config --global github.user "tbjers"
 EOF
 }
