@@ -69,10 +69,10 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-sudo scutil --set ComputerName "qi"
-sudo scutil --set HostName "qi"
-sudo scutil --set LocalHostName "qi"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "qi"
+sudo scutil --set ComputerName "tb-mbpro"
+sudo scutil --set HostName "tb-mbpro"
+sudo scutil --set LocalHostName "tb-mbpro"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "tb-mbpro"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
