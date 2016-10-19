@@ -65,8 +65,8 @@
     unstaged          = diff
     unstash           = stash apply
     who               = shortlog -s --
-    wtf               = !$ZSH/bin/git-wtf
-    rank-contributors = !$ZSH/bin/git-rank-contributors
+    wtf               = !$HOME/bin/git-wtf
+    rank-contributors = !$HOME/bin/git-rank-contributors
 
 [core]
     autocrlf        = false
