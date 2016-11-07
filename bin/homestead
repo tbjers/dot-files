@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
 cd $HOME/Homestead
-vagrant ssh
+vagrant $@
