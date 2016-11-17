@@ -1,7 +1,7 @@
 export PATH=/usr/local/bin:$PATH
 
-if [ -x `which dnf` ]; then
-  echo "Installing common packages..."
+if command -v dnf >/dev/null 2>&1; then
+  echo "Installing common Fedora packages..."
   sudo dnf install -y \
     automake \
     ctags \
@@ -21,6 +21,30 @@ if [ -x `which dnf` ]; then
     sed \
     tmux \
     tree \
+    vim \
+    wget \
+    zsh
+fi
+
+if command -v pacman >/dev/null 2>&1; then
+  echo "Installing common Arch packages..."
+  sudo pacman -S -y --noconfirm \
+    automake \
+    ctags \
+    curl \
+    elinks \
+    hub \
+    gcc \
+    git \
+    make \
+    mariadb \
+    mariadb-clients \
+    mc \
+    openssl \
+    sed \
+    tmux \
+    tree \
+    vim \
     wget \
     zsh
 fi
