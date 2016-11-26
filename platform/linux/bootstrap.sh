@@ -26,6 +26,29 @@ if command -v dnf >/dev/null 2>&1; then
     zsh
 fi
 
+if command -v apt-get >/dev/null 2>&1; then
+  echo "Installing common Ubuntu packages..."
+  sudo apt-get install -y \
+    automake \
+    exuberant-ctags \
+    curl \
+    elinks \
+    git \
+    git-flow \
+    git-hub \
+    gcc \
+    git \
+    make \
+    mc \
+    openssl \
+    sed \
+    tmux \
+    tree \
+    vim \
+    wget \
+    zsh
+fi
+
 if command -v pacman >/dev/null 2>&1; then
   echo "Installing common Arch packages..."
   sudo pacman -S -y --noconfirm \
