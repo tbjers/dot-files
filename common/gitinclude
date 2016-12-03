@@ -30,6 +30,8 @@
     ru                = remote update
     sb                = show-branch
     st                = status -s
+    push-all          = push --follow-tags
+    pa                = push-all
 
     catchup           = log --patch --reverse --topo-order _ribbon..origin/master
     changes           = diff --name-status -r
