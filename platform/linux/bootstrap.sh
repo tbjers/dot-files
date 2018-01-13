@@ -33,18 +33,24 @@ if command -v apt-get >/dev/null 2>&1; then
     exuberant-ctags \
     curl \
     elinks \
+    gconf-service \
+    gconf-service-backend \
+    gconf2-common \
     git \
     git-flow \
     git-hub \
     gcc \
     git \
+    libappindicator1 \
+    libgconf-2-4 \
+    libindicator7 \
     make \
     mc \
+    neovim \
     openssl \
     sed \
     tmux \
     tree \
-    vim \
     wget \
     zsh
 fi
