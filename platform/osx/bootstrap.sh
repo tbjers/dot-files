@@ -21,9 +21,9 @@ brew install \
   git-flow \
   grc \
   hub \
+  imagemagick \
   lame \
   leiningen \
-  mariadb \
   mc \
   openssl \
   pypy \
@@ -55,18 +55,6 @@ if [ -f /etc/zshenv ]; then
   sudo mv /etc/zshenv /etc/zprofile
 fi
 
-# Install Heroku toolbelt
-brew install heroku-toolbelt
-heroku update
-
-# Install Cask
-brew install caskroom/cask/brew-cask
-brew tap caskroom/versions
-
-# Install OS X Fuse
-brew cask install osxfuse
-brew install homebrew/fuse/sshfs
-
 echo "Asking for administrator password upfront..."
 
 # Ask for the administrator password upfront
@@ -74,13 +62,6 @@ sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.osx` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-echo "Setting computer name..."
-
-sudo scutil --set ComputerName "tb-mbpro"
-sudo scutil --set HostName "tb-mbpro"
-sudo scutil --set LocalHostName "tb-mbpro"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "tb-mbpro"
 
 echo "Setting sane Mac OS X defaults..."
 
@@ -101,9 +82,6 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 
 # Check for software updates daily, not just once per week
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
@@ -201,3 +179,6 @@ sudo bash -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
 echo "Installing Input Mono font..."
 rm -Rf /tmp/InputMono && mkdir -p /tmp/InputMono && curl -s -L -o /tmp/InputMono/InputMono.zip "http://input.fontbureau.com/build/?fontSelection=fourStyleFamily&regular=InputMono-Regular&italic=InputMono-Italic&bold=InputMono-Medium&boldItalic=InputMono-MediumItalic&a=0&g=0&i=0&l=0&zero=0&asterisk=0&braces=0&preset=default&line-height=1.3&accept=I+do&email=" && cd /tmp/InputMono && unzip -o -j InputMono.zip *.ttf && mv -f /tmp/InputMono/*.ttf $HOME/Library/Fonts
 echo "Font installed."
+
+# Install Fira Code font
+brew cask install font-fira-code

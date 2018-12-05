@@ -1,17 +1,21 @@
 {
+  "license": "ISC",
   "dependencies": {
-    "themer": "^2.2.3",
+    "themer": "^3.1.6",
     "themer-colors-one": "^1.0.4",
-    "themer-gnome-terminal": "agarrharr/themer-gnome-terminal",
-    "themer-iterm": "^1.0.4",
-    "themer-slack": "^1.0.5",
-    "themer-terminal": "^1.0.4",
-    "themer-vim": "^2.2.7",
-    "themer-vim-lightline": "^2.0.5",
-    "themer-vscode": "^1.0.5",
-    "themer-wallpaper-block-wave": "^2.0.1"
+    "themer-gnome-terminal": "github:agarrharr/themer-gnome-terminal",
+    "themer-iterm": "^2.0.2",
+    "themer-slack": "^2.0.2",
+    "themer-terminal": "^2.0.3",
+    "themer-vim": "^3.0.2",
+    "themer-vim-lightline": "^3.0.2",
+    "themer-vscode": "^2.1.1",
+    "themer-wallpaper-block-wave": "^3.0.3",
+    "themer-wallpaper-triangles": "^2.0.7",
+    "themer-wallpaper-trianglify": "^1.0.4"
   },
+  "private": true,
   "scripts": {
-    "build": "themer -c themer-colors-one -t themer-gnome-terminal -t themer-iterm -t themer-slack -t themer-terminal -t themer-vim -t themer-vim-lightline -t themer-vscode -t themer-wallpaper-block-wave -o theme"
+    "build": "rm -Rf theme/wallpapers/ && themer -c themer-colors-one -t themer-gnome-terminal -t themer-iterm -t themer-slack -t themer-terminal -t themer-vim -t themer-vim-lightline -t themer-vscode -t themer-wallpaper-block-wave -t themer-wallpaper-triangles -t themer-wallpaper-trianglify -o theme && mkdir theme/wallpapers && mogrify -path theme/wallpapers -format png theme/themer-wallpaper*/*.svg"
   }
 }
