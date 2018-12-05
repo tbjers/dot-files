@@ -1,6 +1,6 @@
 {
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "themer": "^3.1.6",
     "themer-colors-one": "^1.0.4",
     "themer-gnome-terminal": "github:agarrharr/themer-gnome-terminal",
