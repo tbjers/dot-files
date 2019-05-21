@@ -17,5 +17,8 @@
   "private": true,
   "scripts": {
     "build": "rm -Rf theme/wallpapers/ && themer -c themer-colors-one -t themer-gnome-terminal -t themer-iterm -t themer-slack -t themer-terminal -t themer-vim -t themer-vim-lightline -t themer-vscode -t themer-wallpaper-block-wave -t themer-wallpaper-triangles -t themer-wallpaper-trianglify -o theme && mkdir theme/wallpapers && mogrify -path theme/wallpapers -format png theme/themer-wallpaper*/*.svg"
+  },
+  "dependencies": {
+    "canvas": "^2.3.1"
   }
 }

@@ -27,7 +27,6 @@ brew install \
   mc \
   openssl \
   pypy \
-  python \
   python3 \
   readline \
   reattach-to-user-namespace \
@@ -35,13 +34,13 @@ brew install \
   tmux \
   tree \
   unrar \
-  vim --with-override-system-vi \
+  vim \
   vimpager \
   watch \
   wget
 
-brew install llvm --with-clang --with-asan
-brew install zsh --disable-etcdir
+brew install llvm --with-asan
+brew install zsh
 
 # links apps installed by homebrew
 brew linkapps
@@ -181,4 +180,5 @@ rm -Rf /tmp/InputMono && mkdir -p /tmp/InputMono && curl -s -L -o /tmp/InputMono
 echo "Font installed."
 
 # Install Fira Code font
+brew tap caskroom/fonts
 brew cask install font-fira-code
