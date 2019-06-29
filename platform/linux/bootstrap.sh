@@ -30,20 +30,14 @@ if command -v apt-get >/dev/null 2>&1; then
   echo "Installing common Ubuntu packages..."
   sudo apt-get install -y \
     automake \
-    exuberant-ctags \
     curl \
     elinks \
-    gconf-service \
-    gconf-service-backend \
-    gconf2-common \
+    fonts-firacode \
     git \
     git-flow \
     git-hub \
     gcc \
     git \
-    libappindicator1 \
-    libgconf-2-4 \
-    libindicator7 \
     make \
     mc \
     neovim \
