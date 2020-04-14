@@ -39,6 +39,7 @@ if command -v apt-get >/dev/null 2>&1; then
     gcc \
     git \
     libcairo2-dev \
+    libjpeg-dev \
     make \
     mc \
     neovim \
